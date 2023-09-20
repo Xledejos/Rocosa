@@ -21,7 +21,7 @@ namespace Rocosa.Controllers
 
         public IActionResult Index()
         {
-            HomeVM homeVM = new HomeVM()
+            HomeVM homeVM = new()
             {
                 productos = _db.Productos.Include(c=>c.Categoria).Include(t=>t.TipoAplicacion),
                 categorias = _db.Categorias
