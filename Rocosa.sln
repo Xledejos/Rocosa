@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocosa", "Rocosa\Rocosa.csproj", "{E5FE198C-CA5C-4305-9D5A-F3C6DE68289A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocosa_Utilidades", "Rocosa_Utilidades\Rocosa_Utilidades.csproj", "{714C9794-CE5C-4D7F-9E31-5FCB6AFD8120}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocosa_Modelos", "Rocosa_Modelos\Rocosa_Modelos.csproj", "{36C0365A-7620-4ABC-AD97-4094B8531964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocosa_AccesoDatos", "Rocosa_AccesoDatos\Rocosa_AccesoDatos.csproj", "{45DE2558-FF7A-49C1-91C8-6EBD9138ED5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5FE198C-CA5C-4305-9D5A-F3C6DE68289A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FE198C-CA5C-4305-9D5A-F3C6DE68289A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FE198C-CA5C-4305-9D5A-F3C6DE68289A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FE198C-CA5C-4305-9D5A-F3C6DE68289A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714C9794-CE5C-4D7F-9E31-5FCB6AFD8120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714C9794-CE5C-4D7F-9E31-5FCB6AFD8120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714C9794-CE5C-4D7F-9E31-5FCB6AFD8120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714C9794-CE5C-4D7F-9E31-5FCB6AFD8120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C0365A-7620-4ABC-AD97-4094B8531964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C0365A-7620-4ABC-AD97-4094B8531964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C0365A-7620-4ABC-AD97-4094B8531964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C0365A-7620-4ABC-AD97-4094B8531964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45DE2558-FF7A-49C1-91C8-6EBD9138ED5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45DE2558-FF7A-49C1-91C8-6EBD9138ED5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45DE2558-FF7A-49C1-91C8-6EBD9138ED5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45DE2558-FF7A-49C1-91C8-6EBD9138ED5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {272978AD-6D1D-4731-938F-AF3187267DCF}
+	EndGlobalSection
+EndGlobal
