@@ -30,7 +30,7 @@ namespace Rocosa.Controllers
         // GET UPSERT: CREAR O EDITAR
         public  IActionResult Upsert(int? id)
         {
-            ProductoVM productoVM = new ProductoVM()
+            ProductoVM productoVM = new ()
             {
                 Producto = new Producto(),
 

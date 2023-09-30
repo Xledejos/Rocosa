@@ -2,10 +2,8 @@
 
 namespace Rocosa_Modelos
 {
-    public class TipoAplicacion
+    public class TipoAplicacion : BaseEntity<int>
     {
-        [Key] 
-        public int Id { get; set; }
         [Required(ErrorMessage ="Obligatorio")]
         public string NombreTipAplicacion { get; set; }
     }

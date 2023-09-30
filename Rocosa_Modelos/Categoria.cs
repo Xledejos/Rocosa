@@ -2,10 +2,8 @@
 
 namespace Rocosa_Modelos
 {
-    public class Categoria
+    public class Categoria : BaseEntity<int>
     {
-        [Key] 
-        public int Id { get; set; }
         [Required(ErrorMessage ="Obligatorio")]
         public string NombreCategoria { get; set; }
         [Required(ErrorMessage ="Obligatorio")]

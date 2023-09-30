@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 using Rocosa_AccesoDatos.Datos;
+using Rocosa_AccesoDatos.Datos.Repository;
 using Rocosa_Utilidades;
 
 namespace Rocosa
@@ -14,10 +17,12 @@ namespace Rocosa
 
             // Add services to the container.
 
-            // Agregar conexi�n a la base de datos
-            const string connectionName = "DefaultConnection";
-            var connection = builder.Configuration.GetConnectionString(connectionName);
-            builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connection));
+            // Agregar conexion a la base de datos
+            //const string connectionName = "DefaultConnection";
+            //var connection = builder.Configuration.GetConnectionString(connectionName);
+            //builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connection));
+
+            builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             // fin conexion a la base de datos
 
             // Add services Identity

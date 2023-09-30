@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Rocosa_Modelos\Rocosa_Modelos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Datos\Repository\IRepository\" />
+  </ItemGroup>
+
 </Project>

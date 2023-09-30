@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rocosa_AccesoDatos.Datos.Repositorio
+namespace Rocosa_Modelos
 {
-    internal class Repositorio
+    public abstract class BaseEntity<TId>
     {
+        public TId Id { get; set; }
     }
 }

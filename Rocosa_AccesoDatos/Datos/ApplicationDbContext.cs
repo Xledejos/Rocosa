@@ -11,10 +11,10 @@ namespace Rocosa_AccesoDatos.Datos
 
         }
 
-        public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<TipoAplicacion> TipoAplicaciones { set; get; } 
-        public DbSet<Producto> Productos { get; set; }
-        public DbSet<UsuarioAplicacion> UsuarioAplicacions { set; get; }
+        public DbSet<Categoria>? Categorias { get; set; }
+        public DbSet<TipoAplicacion>? TipoAplicaciones { set; get; } 
+        public DbSet<Producto>? Productos { get; set; }
+        public DbSet<UsuarioAplicacion>? UsuarioAplicacions { set; get; }
        
     }
 }

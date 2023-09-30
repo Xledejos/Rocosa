@@ -77,13 +77,13 @@ namespace Rocosa.Controllers
         {
             if (id == null || id == 0)
             {
-                NotFound();
+                return NotFound();
             }
             var obj = _db.Categorias.Find(id);
 
             if (obj == null)
             {
-                NotFound();
+                return NotFound();
             }
             return View(obj);
         }
