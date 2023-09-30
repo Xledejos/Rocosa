@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Rocosa_AccesoDatos.Datos.Repository.IRepository;
 using Rocosa_Modelos;
 using System;
 using System.Collections.Generic;
@@ -92,17 +93,3 @@ namespace Rocosa_AccesoDatos.Datos.Repository
     }
 }
 
-//if (id == null || id == 0)
-//{
-//    return NotFound();
-//}
-
-//Producto producto = _db.Productos.Include(c => c.Categoria)
-//                                 .Include(t => t.TipoAplicacion)
-//                                 .FirstOrDefault(p => p.Id == id);
-
-//if (producto == null)
-//{
-//    return NotFound();
-//}
-//return View(producto);

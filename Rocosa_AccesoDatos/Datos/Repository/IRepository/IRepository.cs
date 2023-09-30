@@ -5,12 +5,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rocosa_AccesoDatos.Datos.Repository
+namespace Rocosa_AccesoDatos.Datos.Repository.IRepository
 {
-    public interface IRepository<T, TId> where T : class
+    public interface IRepository<T, TId> 
     {
         Task<T?> GetById(TId id);
-        Task<T?> GetFirst(
+        Task<T> GetFirst(
             Expression<Func<T, bool>> filtro = null,
             string includeProperty = null,
             bool isTracking = true
@@ -24,6 +24,6 @@ namespace Rocosa_AccesoDatos.Datos.Repository
         void Insert(T entity);
         void Delete(T entity);
         void Save();
-        
+
     }
 }
