@@ -1,4 +1,5 @@
-﻿using Rocosa_AccesoDatos.Datos.Repository.IRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using Rocosa_AccesoDatos.Datos.Repository.IRepository;
 using Rocosa_Modelos;
 using System;
 using System.Collections.Generic;
@@ -11,21 +12,18 @@ namespace Rocosa_AccesoDatos.Datos.Repository
 {
     public class CategoriaRepository : Repository<Categoria, int>, ICategoriaRepository
     {
-        private readonly ApplicationDbContext _context;
-
         public CategoriaRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public void Update(Categoria categoria)
         {
-            var previousCategory = _context.Categorias.FirstOrDefault(c => c.Id == categoria.Id);
+            var previousCategory = Entities.FirstOrDefault(c => c.Id == categoria.Id);
 
             if (previousCategory != null)
             {
-                previousCategory.NombreCategoria = categoria.NombreCategoria;
-                previousCategory.MostrarOrden = categoria.MostrarOrden;
+                previousCategory.NombreCategoria = previousCategory.NombreCategoria;
+                previousCategory.MostrarOrden = previousCategory.MostrarOrden;
             }
         }
     }

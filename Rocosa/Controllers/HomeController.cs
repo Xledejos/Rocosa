@@ -21,10 +21,10 @@ namespace Rocosa.Controllers
 
         public IActionResult Index()
         {
-            HomeVM homeVM = new()
+            HomeVM homeVM = new ()
             {
-                productos = _db.Productos.Include(c=>c.Categoria).Include(t=>t.TipoAplicacion),
-                categorias = _db.Categorias
+                Productos = _db.Productos.Include(c=>c.Categoria).Include(t=>t.TipoAplicacion),
+                Categorias = _db.Categorias
             };
             return View(homeVM);
         }
@@ -32,14 +32,14 @@ namespace Rocosa.Controllers
         // GET
         public IActionResult Detalle(int id)
         {
-            List<CarroCompra> carroCompraList = new List<CarroCompra>();
+            List<CarroCompra> carroCompraList = new();
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null &&
                 HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {
                 carroCompraList = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
 
-            DetalleVM detalleVM = new DetalleVM()
+            DetalleVM detalleVM = new()
             {
                 Producto = _db.Productos.Include(c => c.Categoria).Include(t => t.TipoAplicacion).Where(p=>p.Id==id).FirstOrDefault(),
 				ExiteEnCarro = false
@@ -60,7 +60,7 @@ namespace Rocosa.Controllers
         [HttpPost, ActionName("Detalle")]
         public IActionResult DetallePost(int id)
         {
-            List<CarroCompra> carroCompraList = new List<CarroCompra>();
+            List<CarroCompra> carroCompraList = new();
             if(HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null &&
                 HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {
@@ -75,7 +75,7 @@ namespace Rocosa.Controllers
         // Get método de acción - Remover del Carro
         public IActionResult RemoverDeCarro(int id)
         {
-            List<CarroCompra> carroCompraList = new List<CarroCompra>();
+            List<CarroCompra> carroCompraList = new();
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null &&
                 HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {

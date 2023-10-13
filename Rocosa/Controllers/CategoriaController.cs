@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Rocosa_AccesoDatos.Datos;
+using Rocosa_AccesoDatos.Datos.Repository.IRepository;
 using Rocosa_Modelos;
 using Rocosa_Utilidades;
 
@@ -9,17 +9,18 @@ namespace Rocosa.Controllers
     [Authorize(Roles = WC.AdminRole)]
     public class CategoriaController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ICategoriaRepository _catRepo;
 
-        public CategoriaController(ApplicationDbContext db)
+        public CategoriaController(ICategoriaRepository catRepo)
         {
-            _db = db;
+            _catRepo = catRepo;
         }
-        public IActionResult Index()
-        {
-            IEnumerable<Categoria> lista = _db.Categorias;
 
-            return View(lista);
+        public async Task<IActionResult> Index()
+        {
+           _catRepo.GetAll();
+
+            return View();
         }
 
         // GET CREAR
@@ -30,26 +31,27 @@ namespace Rocosa.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Crear(Categoria categoria)
+        public async Task<IActionResult> Crear(Categoria categoria)
         {
             if(ModelState.IsValid)
             {
-                _db.Categorias.Add(categoria);
-                _db.SaveChanges();
+                _catRepo.Insert(categoria);
+                _catRepo.Save();
 
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
+
             return View();
         }
 
         // GET EDITAR
-        public IActionResult Editar(int? id)
+        public async Task<IActionResult> Editar(int? id)
         {
             if(id == null || id == 0)
             {
                 NotFound();
             }
-            var obj = _db.Categorias.Find(id);
+            var obj = await _catRepo.GetById(id.GetValueOrDefault());
 
             if(obj == null)
             {
@@ -60,12 +62,12 @@ namespace Rocosa.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Editar(Categoria categoria)
+        public async Task<IActionResult> Editar(Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                _db.Categorias.Update(categoria);
-                _db.SaveChanges();
+                _catRepo.Update(categoria);
+                _catRepo.Save();
 
                 return RedirectToAction("Index");
             }
@@ -73,31 +75,34 @@ namespace Rocosa.Controllers
         }
 
         // GET ELIMINAR
-        public IActionResult Eliminar(int? id)
+        public async Task<IActionResult> Eliminar(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Categorias.Find(id);
+            var obj = await _catRepo.GetById(id.GetValueOrDefault());
 
             if (obj == null)
             {
                 return NotFound();
             }
+
+
             return View(obj);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Eliminar(Categoria categoria)
+        public async Task<IActionResult> Eliminar(Categoria categoria)
         {
             if (categoria == null)
             {
                 return NotFound();
             }
-            _db.Categorias.Remove(categoria);
-            _db.SaveChanges();
+            
+            _catRepo.Delete(categoria);
+            _catRepo.Save();
 
             return RedirectToAction("Index");
         }

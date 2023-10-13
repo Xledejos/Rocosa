@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
 using Rocosa_AccesoDatos.Datos;
+using Rocosa_AccesoDatos.Datos.Repository;
 using Rocosa_AccesoDatos.Datos.Repository.IRepository;
 using Rocosa_Utilidades;
 
@@ -32,7 +31,7 @@ namespace Rocosa
                             .AddEntityFrameworkStores<ApplicationDbContext>();
             // Fin Identity implementetion
 
-            builder.Services.AddScoped<ICategoriaRepository, ICategoriaRepository>();
+            builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
             // Implementar Email Sender
             builder.Services.AddTransient<IEmailSender, EmailSender>();

@@ -10,15 +10,15 @@ namespace Rocosa_AccesoDatos.Datos.Repository.IRepository
     public interface IRepository<T, TId> 
     {
         Task<T?> GetById(TId id);
-        Task<T> GetFirst(
-            Expression<Func<T, bool>> filtro = null,
-            string includeProperty = null,
+        T GetFirst(
+            Expression<Func<T, bool>>? filtro = null,
+            string? includeProperty = null,
             bool isTracking = true
             );
-        Task<IEnumerable<T>> GetAll(
-            Expression<Func<T, bool>> filtro = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string includeProperty = null,
+        IQueryable<T> GetAll(
+            Expression<Func<T, bool>>? filtro = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            string? includeProperty = null,
             bool isTracking = true
             );
         void Insert(T entity);

@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Rocosa_AccesoDatos.Datos.Repository
 {
-    public class Repository<T, TId> : IRepository<T, TId>
+    public abstract class Repository<T, TId> : IRepository<T, TId>
         where T : BaseEntity<TId>
         where TId : IEquatable<TId>
     {
         private readonly ApplicationDbContext _context;
         protected DbSet<T> Entities => _context.Set<T>();
 
-        public Repository(ApplicationDbContext context)
+        protected Repository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace Rocosa_AccesoDatos.Datos.Repository
             => await Entities.FirstOrDefaultAsync(i => i.Id.Equals(id));
 
 
-        public Task<T?> GetFirst(Expression<Func<T, bool>> filtro = null, string includeProperty = null, bool isTracking = true)
+        public T GetFirst(Expression<Func<T, bool>>? filtro = null, string? includeProperty = null, bool isTracking = true)
         {
             IQueryable<T> query = Entities;
 
@@ -40,7 +40,7 @@ namespace Rocosa_AccesoDatos.Datos.Repository
             {
                 foreach (var item in includeProperty.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query = query.Include(item);
+                    query = query.Include(item); // Categoria, TipoAplicacion
                 }
             }
 
@@ -49,10 +49,10 @@ namespace Rocosa_AccesoDatos.Datos.Repository
                 query = query.AsNoTracking();
             }
 
-            return query.FirstOrDefaultAsync();
+            return query.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperty = null, bool isTracking = true)
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperty = null, bool isTracking = true)
         {
             IQueryable<T> query = Entities;
 
@@ -65,7 +65,7 @@ namespace Rocosa_AccesoDatos.Datos.Repository
             {
                 foreach (var item in includeProperty.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query = query.Include(item);
+                    query = query.Include(item); // Categoria, TipoAplicacion
                 }
             }
 
@@ -79,17 +79,23 @@ namespace Rocosa_AccesoDatos.Datos.Repository
                 query = query.AsNoTracking();
             }
 
-            return query.ToList();
+            return query;
         }
 
         public void Insert(T entity)
-            => Entities.Add(entity);
+        {
+            Entities.Add(entity);
+        }
 
         public void Delete(T entity)
-            => Entities.Remove(entity);
+        {
+            Entities.Remove(entity);
+        }
 
-        public async void Save()
-            => await _context.SaveChangesAsync();
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }
 
